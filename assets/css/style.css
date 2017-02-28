@@ -42,7 +42,7 @@ body {
 }
 
 .prijava-box {
-    margin: 30 0 50 0;
+    margin: 30 0 30 0;
 }
 
 .prijava-box a {
@@ -60,11 +60,6 @@ body {
 
 .pozdrav {
     text-align: center;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
 }
 
 .navbar {
@@ -87,4 +82,14 @@ footer {
 
 .active {
     background-color: #c41515;
+}
+
+#cookie-alert p {
+    font-size:16px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    left:25%;
 }

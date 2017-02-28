@@ -20,14 +20,70 @@
     </head>
     <body>
         <div id="vsebina">
+            {% if logiran %}
+
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <img class="logo-menu" src="https://www.nascarracingexperience.com/wp-content/uploads/2015/10/circle_gift-512.png">
+                          </button>
+                          <a class="navbar-brand" href="/">BDAY PLANNER</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                          <ul class="nav navbar-nav">
+                              {% block active %}
+                              <li class="active"><a href="#">Home</a></li>
+                              <li><a href="#">Birthday</a></li>
+                              <li><a href="#">Anniversary</a></li>
+                              <li><a href="#">Add/Edit/Delete</a></li>
+                              <li><a href="#">About</a></li>
+                              {% endblock active %}
+                          </ul>
+                          <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ logout_url }}"><span class="glyphicon glyphicon-log-out"></span> Log-out</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="pozdrav">
+                        <div class="panel panel-default">
+                            <div class="panel-body"><h1>Dobrodosli {{ user_nickname }}!</h1></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% block specifika %}{% endblock specifika %}
+        {% else %}
+            <div class="container">
+                <div class="row pozdrav-ni-logiran">
+                    <div class="col-sm-offset-2 col-sm-8 ni-logiran">
+                        <h1 class="logo-text-ni-logiran">BDay Planner!</h1>
+                        <img class="responsive logo-ni-logiran" src="https://www.nascarracingexperience.com/wp-content/uploads/2015/10/circle_gift-512.png">
+                        <p>Never forget a birthday again!</p>
+                        <hr>
+
+                        <div class="prijava-box">
+                            <h3>Login by Google!</h3>
+                            <br>
+                            <a href="{{ login_url }}"><span class="glyphicon glyphicon-share-alt"></span> Log-in</a>
+                        </div>
+                        <div id="cookie-alert">
+                            <p>This site uses cookies.<br>By continuing to browse the site, you are agreeing to our use of cookies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
         </div>
-        <div id="foot">
-            <footer class="container">
-                <p>
-                    Bday Planner &copy; 2016
-                </p>
-            </footer>
+        <div class="container" id="footer">
+            <p>Bday Planner &copy; 2017</p>
         </div>
     </body>
 </html>

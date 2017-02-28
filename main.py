@@ -26,12 +26,7 @@ class BaseHandler(webapp2.RequestHandler):
     def render_template(self, view_filename, params=None):
         if not params:
             params = {}
-        template = jinja_env.get_template(view_filename)
-        return self.response.out.write(template.render(params))
 
-
-class MainHandler(BaseHandler):
-    def get(self):
         user = users.get_current_user()
 
         logiran = False
@@ -43,14 +38,49 @@ class MainHandler(BaseHandler):
             user_nickname = user.nickname()
 
             logout_url = users.create_logout_url("/")
+            self.response.set_cookie(key="bday-cookie", value="accepted")
 
         else:
             user_nickname = "neznanec"
             login_url = users.create_login_url("/")
 
         params = {"logiran": logiran, "login_url": login_url, "logout_url": logout_url, "user_nickname": user_nickname}
-        return self.render_template("hello.html", params=params)
+
+        template = jinja_env.get_template(view_filename)
+        return self.response.out.write(template.render(params))
+
+
+class MainHandler(BaseHandler):
+    def get(self):
+
+        return self.render_template("hello.html")
+
+class BdayHandler(BaseHandler):
+    def get(self):
+
+        return self.render_template("bday.html")
+
+class AnniversaryHandler(BaseHandler):
+    def get(self):
+
+        return self.render_template("anniversary.html")
+
+class AddEditHandler(BaseHandler):
+    def get(self):
+
+        return self.render_template("add_edit.html")
+
+class AboutHandler(BaseHandler):
+    def get(self):
+
+        return self.render_template("about.html")
+
+
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
+    webapp2.Route('/bday', BdayHandler),
+    webapp2.Route('/anniversary', AnniversaryHandler),
+    webapp2.Route('/add_edit', AddEditHandler),
+    webapp2.Route('/about', AboutHandler),
 ], debug=True)

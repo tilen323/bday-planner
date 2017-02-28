@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 
-
 {% block active %}
-    <li class="active"><a href="/">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li><a href="/bday">Birthday</a></li>
-    <li><a href="/anniversary">Anniversary</a></li>
+    <li class="active"><a href="/anniversary">Anniversary</a></li>
     <li><a href="/add_edit">Add/Edit/Delete</a></li>
     <li><a href="/about">About</a></li>
 {% endblock active %}
 
 
 {% block specifika %}
-    <div class="container">
-        <p>main</p>
-    </div>
+<div class="container">
+    <p>anniversary</p>
+</div>
 {% endblock specifika %}
