@@ -1,6 +1,6 @@
 # About
 
-Basic GAE project with Jinja templating engine
+GAE boilerplate for SmartNinja **Web development 2** course.
 
 # Usage
 

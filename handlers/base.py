@@ -1,10 +1,12 @@
 import os
+import uuid
+
 import jinja2
 import webapp2
-from time import gmtime, strftime
-from google.appengine.api import users
-from google.appengine.api import urlfetch
 
+from google.appengine.api import users, memcache
+
+from models.user_profile import User
 
 template_dir = os.path.join(os.path.dirname(__file__), "../templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
@@ -28,22 +30,18 @@ class BaseHandler(webapp2.RequestHandler):
 
         user = users.get_current_user()
 
-        logiran = False
-        login_url = ""
-        logout_url = ""
-
         if user:
-            logiran = True
-            user_nickname = user.nickname()
+            params["user"] = User.get_or_create(user.email())
+            params["logout_url"] = users.create_logout_url("/")
 
-            logout_url = users.create_logout_url("/")
             self.response.set_cookie(key="bday-cookie", value="accepted")
 
         else:
-            user_nickname = "neznanec"
-            login_url = users.create_login_url("/")
+            params["login_url"] = users.create_login_url("/")
 
-        params = {"logiran": logiran, "login_url": login_url, "logout_url": logout_url, "user_nickname": user_nickname}
+        csrf_token = str(uuid.uuid4())  # convert UUID to string
+        memcache.add(key=csrf_token, value=True, time=600)
+        params["csrf_token"] = csrf_token
 
         template = jinja_env.get_template(view_filename)
         return self.response.out.write(template.render(params))
