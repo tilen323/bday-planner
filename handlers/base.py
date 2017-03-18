@@ -51,23 +51,3 @@ class MainHandler(BaseHandler):
     def get(self):
 
         return self.render_template("hello.html")
-
-class BdayHandler(BaseHandler):
-    def get(self):
-
-        return self.render_template("bday.html")
-
-class AnniversaryHandler(BaseHandler):
-    def get(self):
-
-        return self.render_template("anniversary.html")
-
-class AddEditHandler(BaseHandler):
-    def get(self):
-
-        return self.render_template("add_edit.html")
-
-class AboutHandler(BaseHandler):
-    def get(self):
-
-        return self.render_template("about.html")

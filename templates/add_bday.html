@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block active %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/bday">Birthdays</a></li>
+    <li><a href="/anniversary">Anniversaries</a></li>
+    <li class="active"><a href="/add_edit">Add/Edit/Delete</a></li>
+    <li><a href="/about">About</a></li>
+{% endblock active %}
+
+
+{% block specifika %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6">
+                <form action="/profile/{{user_profile.key.id()}}/edit" method="post">
+
+                    <input type="hidden" name="csrf_token" value="{{csrf_token}}">
+
+                    <div class="form-group">
+                        <label>First name:</label>
+                        <input class="form-control" name="first_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last name:</label>
+                        <input class="form-control" name="last_name" required>
+                    </div>
+
+                    <div class="avatar_radio">
+                        <label class="radio-inline"><input type="radio" name="avatar" value="https://s30.postimg.org/6mdag8cip/ninja.png" checked>
+                            <img class="avatar_select" src="https://s30.postimg.org/6mdag8cip/ninja.png">
+                        </label>
+
+                        <label class="radio-inline"><input type="radio" name="avatar" value="https://s8.postimg.org/8bj5wxwzp/solider.png">
+                            <img class="avatar_select" src="https://s8.postimg.org/8bj5wxwzp/solider.png">
+                        </label>
+
+                        <label class="radio-inline"><input type="radio" name="avatar" value="https://s15.postimg.org/luvcukhez/astronaut.png">
+                            <img class="avatar_select" src="https://s15.postimg.org/luvcukhez/astronaut.png">
+                        </label>
+
+                        <label class="radio-inline"><input type="radio" name="avatar" value="https://s22.postimg.org/bxscbqyhd/firewoman.png">
+                            <img class="avatar_select" src="https://s22.postimg.org/bxscbqyhd/firewoman.png">
+                        </label>
+
+                        <label class="radio-inline"><input type="radio" name="avatar" value="https://s4.postimg.org/cqkic7iod/graduate.png">
+                            <img class="avatar_select" src="https://s4.postimg.org/cqkic7iod/graduate.png">
+                        </label>
+
+                        <label class="radio-inline"><input type="radio" name="avatar" value="https://s11.postimg.org/51qcwnhtf/robot.png">
+                            <img class="avatar_select" src="https://s11.postimg.org/51qcwnhtf/robot.png">
+                        </label><br><br>
+                    </div>
+                    <button class="btn btn-default">Add Birthday</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock specifika %}

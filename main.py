@@ -1,11 +1,13 @@
 import webapp2
-from handlers.base import MainHandler, BdayHandler, AnniversaryHandler, AddEditHandler, AboutHandler
 
+from handlers.anniversary import AnniversaryHandler
+from handlers.base import MainHandler
+from handlers.bday import BdayHandler
+from handlers.event import EventHandler
 
 app = webapp2.WSGIApplication([
-    webapp2.Route('/', MainHandler),
-    webapp2.Route('/bday', BdayHandler),
-    webapp2.Route('/anniversary', AnniversaryHandler),
-    webapp2.Route('/add_edit', AddEditHandler),
-    webapp2.Route('/about', AboutHandler),
+    webapp2.Route('/', MainHandler, name="main-page"),
+    webapp2.Route('/bday', BdayHandler, name="bday"),
+    webapp2.Route('/anniversary', AnniversaryHandler, name="anniversary"),
+    webapp2.Route('/event', EventHandler, name="event"),
 ], debug=True)
