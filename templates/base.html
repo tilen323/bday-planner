@@ -36,8 +36,8 @@
                           <ul class="nav navbar-nav">
                               {% block active %}
                               <li class="active"><a href="#">Home</a></li>
-                              <li><a href="#">Birthday</a></li>
-                              <li><a href="#">Anniversary</a></li>
+                              <li><a href="#">Birthdays</a></li>
+                              <li><a href="#">Anniversaries</a></li>
                               <li><a href="#">Add/Edit/Delete</a></li>
                               <li><a href="#">About</a></li>
                               {% endblock active %}
@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="pozdrav">
                         <div class="panel panel-default">
-                            <div class="panel-body"><h1>Dobrodosli {{ user_nickname }}!</h1></div>
+                            <div class="panel-body"><h1>Welcome {{ user_nickname }}!</h1></div>
                         </div>
                     </div>
                 </div>
@@ -82,6 +82,7 @@
             </div>
         {% endif %}
         </div>
+
         <div class="container" id="footer">
             <p>Bday Planner &copy; 2017</p>
         </div>
