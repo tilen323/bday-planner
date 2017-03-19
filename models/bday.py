@@ -4,7 +4,7 @@ class Bday(ndb.Model):
     title = ndb.StringProperty(default="bday")
     first_name = ndb.StringProperty()
     last_name = ndb.StringProperty()
-    avatar = ndb.StringProperty(default="https://s21.postimg.org/bu6oqrxg7/man.png")
+    avatar = ndb.StringProperty()
     bday_date = ndb.DateTimeProperty()
     user_email = ndb.StringProperty()
     deleted = ndb.BooleanProperty(default=False)
@@ -17,6 +17,16 @@ class Bday(ndb.Model):
         new_bday.put()
 
     @classmethod
-    def add_bday_no_image(cls, first_name, last_name, bday_date, user_email):
-        new_bday = Bday(first_name=first_name, last_name=last_name, bday_date=bday_date, user_email=user_email)
-        new_bday.put()
+    def delete_bday(cls,bday):
+        bday.deleted = True
+        bday.put()
+        return bday
+
+    @classmethod
+    def edit_bday(cls, bday, first_name, last_name, avatar, bday_date):
+        bday.first_name = first_name
+        bday.last_name = last_name
+        bday.avatar = avatar
+        bday.bday_date = bday_date
+        bday.put()
+        return bday

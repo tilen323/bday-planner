@@ -17,3 +17,20 @@ class Anniversary(ndb.Model):
                                       user_email=user_email,
                                       avatar=avatar)
         new_anniversary.put()
+        return new_anniversary
+
+    @classmethod
+    def delete_anniversary(cls, anniversary):
+        anniversary.deleted = True
+        anniversary.put()
+
+        return anniversary
+
+    @classmethod
+    def edit_anniversary(cls, anniversary, anniversary_name, anniversary_date, avatar):
+        anniversary.anniversary_name = anniversary_name
+        anniversary.anniversary_date = anniversary_date
+        anniversary.avatar = avatar
+        anniversary.put()
+        return anniversary
+
