@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block active %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/bday/add">Birthdays</a></li>
+    <li><a href="/anniversary/add">Anniversaries</a></li>
+    <li class="active"><a href="/event/add">Events</a></li>
+{% endblock active %}
+
+
+{% block specifika %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6">
+                <form method="post">
+
+                    <input type="hidden" name="csrf_token" value="{{csrf_token}}">
+
+                    <div class="form-group">
+                        <label>Event name:</label>
+                        <input class="form-control" name="event_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event location:</label>
+                        <input class="form-control" name="location" required>
+                    </div>
+
+                    <div class="date-width-2">
+                        <div class="form-group select_day">
+                            <label for="sel1">Day:</label>
+                            <select class="form-control" name="event_day" id="sel1">
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="date-width-2">
+                        <div class="form-group select_month">
+                            <label for="sel2">Month:</label>
+                            <select class="form-control" name="event_month" id="sel2">
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="date-width-2">
+                        <div class="form-group">
+                            <label>Year:</label>
+                            <input class="form-control" name="event_year" type="number" min="1850" max="2050" required>
+                        </div>
+                    </div>
+
+                    <div class="date-width-2">
+                        <div class="form-group select_month">
+                            <label for="sel3">Hour:</label>
+                            <select class="form-control" name="event_hour" id="sel3">
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="date-width-2">
+                        <div class="form-group select_month">
+                            <label for="sel2">Minute:</label>
+                            <select class="form-control" name="event_minute" id="sel4">
+                                <option value="00">00</option>
+                                <option value="05">05</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                                <option value="35">35</option>
+                                <option value="40">40</option>
+                                <option value="45">45</option>
+                                <option value="50">50</option>
+                                <option value="55">55</option>
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="avatar_radio">
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s30.postimg.org/6mdag8cip/ninja.png" checked>
+                                <img class="avatar_select" src="https://s30.postimg.org/6mdag8cip/ninja.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s8.postimg.org/8bj5wxwzp/solider.png">
+                                <img class="avatar_select" src="https://s8.postimg.org/8bj5wxwzp/solider.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s15.postimg.org/luvcukhez/astronaut.png">
+                                <img class="avatar_select" src="https://s15.postimg.org/luvcukhez/astronaut.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s22.postimg.org/bxscbqyhd/firewoman.png">
+                                <img class="avatar_select" src="https://s22.postimg.org/bxscbqyhd/firewoman.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s4.postimg.org/cqkic7iod/graduate.png">
+                                <img class="avatar_select" src="https://s4.postimg.org/cqkic7iod/graduate.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s11.postimg.org/51qcwnhtf/robot.png">
+                                <img class="avatar_select" src="https://s11.postimg.org/51qcwnhtf/robot.png">
+                            </label><br><br>
+                        </div>
+
+                    <button class="btn btn-default">Add Event</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock specifika %}

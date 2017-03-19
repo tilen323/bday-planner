@@ -88,6 +88,20 @@ body {
     font-size:16px;
 }
 
+.avatar_select {
+    max-height: 50px;
+}
+
+.date-width {
+    width: 33%;
+    float: left;
+}
+
+.date-width-2 {
+    width: 20%;
+    float: left;
+}
+
 #footer {
     position: absolute;
     bottom: 0;

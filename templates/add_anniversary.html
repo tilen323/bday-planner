@@ -2,8 +2,8 @@
 
 {% block active %}
     <li><a href="/">Home</a></li>
-    <li class="active"><a href="/bday/add">Birthdays</a></li>
-    <li><a href="/anniversary/add">Anniversaries</a></li>
+    <li><a href="/bday/add">Birthdays</a></li>
+    <li class="active"><a href="/anniversary/add">Anniversaries</a></li>
     <li><a href="/event/add">Events</a></li>
 {% endblock active %}
 
@@ -17,19 +17,14 @@
                     <input type="hidden" name="csrf_token" value="{{csrf_token}}">
 
                     <div class="form-group">
-                        <label>First name:</label>
-                        <input class="form-control" name="first_name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Last name:</label>
-                        <input class="form-control" name="last_name" required>
+                        <label>Anniversary name:</label>
+                        <input class="form-control" name="anniversary_name" required>
                     </div>
 
                     <div class="date-width">
                         <div class="form-group select_day">
                             <label for="sel1">Day:</label>
-                            <select class="form-control" name="bday_day" id="sel1">
+                            <select class="form-control" name="anniversary_day" id="sel1">
                                 <option value="01">1</option>
                                 <option value="02">2</option>
                                 <option value="03">3</option>
@@ -68,7 +63,7 @@
                     <div class="date-width">
                         <div class="form-group select_month">
                             <label for="sel2">Month:</label>
-                            <select class="form-control" name="bday_month" id="sel2">
+                            <select class="form-control" name="anniversary_month" id="sel2">
                                 <option value="01">January</option>
                                 <option value="02">February</option>
                                 <option value="03">March</option>
@@ -88,16 +83,37 @@
                     <div class="date-width">
                         <div class="form-group">
                             <label>Year:</label>
-                            <input class="form-control" name="bday_year" type="number" min="1850" max="2050" required>
+                            <input class="form-control" name="anniversary_year" type="number" min="1850" max="2050" required>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Image url:</label>
-                        <input class="form-control" name="avatar" type="url" pattern="https?://.+" placeholder="Optional..">
-                    </div>
+                    <div class="avatar_radio">
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s30.postimg.org/6mdag8cip/ninja.png" checked>
+                                <img class="avatar_select" src="https://s30.postimg.org/6mdag8cip/ninja.png">
+                            </label>
 
-                    <button class="btn btn-default">Add Birthday</button>
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s8.postimg.org/8bj5wxwzp/solider.png">
+                                <img class="avatar_select" src="https://s8.postimg.org/8bj5wxwzp/solider.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s15.postimg.org/luvcukhez/astronaut.png">
+                                <img class="avatar_select" src="https://s15.postimg.org/luvcukhez/astronaut.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s22.postimg.org/bxscbqyhd/firewoman.png">
+                                <img class="avatar_select" src="https://s22.postimg.org/bxscbqyhd/firewoman.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s4.postimg.org/cqkic7iod/graduate.png">
+                                <img class="avatar_select" src="https://s4.postimg.org/cqkic7iod/graduate.png">
+                            </label>
+
+                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s11.postimg.org/51qcwnhtf/robot.png">
+                                <img class="avatar_select" src="https://s11.postimg.org/51qcwnhtf/robot.png">
+                            </label><br><br>
+                        </div>
+
+                    <button class="btn btn-default">Add Anniversary</button>
                 </form>
             </div>
         </div>

@@ -3,9 +3,9 @@
 
 {% block active %}
     <li class="active"><a href="/">Home</a></li>
-    <li><a href="/bday">Birthdays</a></li>
-    <li><a href="/anniversary">Anniversaries</a></li>
-    <li><a href="/event">Events</a></li>
+    <li><a href="/bday/add">Birthdays</a></li>
+    <li><a href="/anniversary/add">Anniversaries</a></li>
+    <li><a href="/event/add">Events</a></li>
 {% endblock active %}
 
 
@@ -13,13 +13,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <a href="#" class="btn btn-default">Birthday</a>
+                <a href="/bday/add" class="btn btn-default">Birthday</a>
             </div>
             <div class="col-sm-4">
-                <a href="#" class="btn btn-default">Anniversary</a>
+                <a href="/anniversary/add" class="btn btn-default">Anniversary</a>
             </div>
             <div class="col-sm-4">
-                <a href="#" class="btn btn-default">Event</a>
+                <a href="/event/add" class="btn btn-default">Event</a>
             </div>
         </div>
     </div>

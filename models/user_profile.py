@@ -7,6 +7,7 @@ class User(ndb.Model):
     email = ndb.StringProperty()
     deleted = ndb.BooleanProperty(default=False)
     created = ndb.DateTimeProperty(auto_now_add=True)
+    updated = ndb.DateTimeProperty(auto_now=True)
 
     @classmethod
     def get_or_create(cls, email):
