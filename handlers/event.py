@@ -30,6 +30,6 @@ class AddEventHandler(BaseHandler):
         event_date = event_day + event_month + event_year + event_hour + event_minute
         datetime_object = datetime.strptime(event_date, '%d%m%Y%I%M')
 
-        Event.add_event(event_name=event_name, location=location, avatar=avatar, event_date=datetime_object, user_email=user_profile.email)
+        Event.add_event(event_name=event_name, location=location, avatar=avatar, date=datetime_object, user_email=user_profile.email)
 
         return self.render_template("add_event.html")

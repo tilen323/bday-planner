@@ -102,6 +102,10 @@ body {
     float: left;
 }
 
+.main-list {
+    margin-top: 40px;
+}
+
 #footer {
     position: absolute;
     bottom: 0;

@@ -4,16 +4,18 @@ class Anniversary(ndb.Model):
     title = ndb.StringProperty(default="anniversary")
     anniversary_name = ndb.StringProperty()
     avatar = ndb.StringProperty()
-    anniversary_date = ndb.DateTimeProperty()
+    date = ndb.DateTimeProperty()
+    anniversary_year = ndb.IntegerProperty()
     user_email = ndb.StringProperty()
     deleted = ndb.BooleanProperty(default=False)
     created = ndb.DateTimeProperty(auto_now_add=True)
     updated = ndb.DateTimeProperty(auto_now=True)
 
     @classmethod
-    def add_anniversary(cls, anniversary_name, anniversary_date, user_email, avatar):
+    def add_anniversary(cls, anniversary_name, date, anniversary_year, user_email, avatar):
         new_anniversary = Anniversary(anniversary_name=anniversary_name,
-                                      anniversary_date=anniversary_date,
+                                      date=date,
+                                      anniversary_year=anniversary_year,
                                       user_email=user_email,
                                       avatar=avatar)
         new_anniversary.put()
@@ -27,9 +29,9 @@ class Anniversary(ndb.Model):
         return anniversary
 
     @classmethod
-    def edit_anniversary(cls, anniversary, anniversary_name, anniversary_date, avatar):
+    def edit_anniversary(cls, anniversary, anniversary_name, date, avatar):
         anniversary.anniversary_name = anniversary_name
-        anniversary.anniversary_date = anniversary_date
+        anniversary.date = date
         anniversary.avatar = avatar
         anniversary.put()
         return anniversary

@@ -12,14 +12,38 @@
 {% block specifika %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                <a href="/bday/add" class="btn btn-default">Birthday</a>
-            </div>
-            <div class="col-sm-4">
-                <a href="/anniversary/add" class="btn btn-default">Anniversary</a>
-            </div>
-            <div class="col-sm-4">
-                <a href="/event/add" class="btn btn-default">Event</a>
+            <div class="col-sm-12 main-list">
+                {% if new_sorted_list %}
+                    {% for item in new_sorted_list %}
+                        {% if item.title == "bday" %}
+                        <div class="bday_item">
+                            <p>Birthday:</p>
+                            <p>First name: {{ item.first_name }}</p>
+                            <p>Last name: {{ item.last_name }}</p>
+                            <p>Date: {{ item.date.strftime('%d.%m.') }}{{ item.bday_year }}</p>
+                        </div>
+                        <hr>
+                        {% endif %}
+
+                        {% if item.title == "anniversary" %}
+                        <div class="anniversary_item">
+                            <p>Anniversary:</p>
+                            <p>Name: {{ item.anniversary_name }}</p>
+                            <p>Date: {{ item.date.strftime('%d.%m.') }}{{ item.anniversary_year }}</p>
+                        </div>
+                        <hr>
+                        {% endif %}
+
+                        {% if item.title == "event" %}
+                        <div class="event_item">
+                            <p>Event:</p>
+                            <p>Name: {{ item.event_name }}</p>
+                            <p>Date: {{ item.date.strftime('%d.%m.%Y at %H:%M') }}</p>
+                        </div>
+                        <hr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
