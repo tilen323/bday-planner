@@ -10,41 +10,50 @@
 
 
 {% block specifika %}
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 main-list">
-                {% if new_sorted_list %}
-                    {% for item in new_sorted_list %}
-                        {% if item.title == "bday" %}
-                        <div class="bday_item">
-                            <p>Birthday:</p>
+    <div class="container main-page">
+        {% if new_sorted_list %}
+            {% for item in new_sorted_list %}
+                {% if item.title == "bday" %}
+                <div class="row">
+                    <div class="col-sm-12 bday-item">
+                        <img class="item-img" src="https://s18.postimg.org/jodctqidl/supermarket_gift.png">
+                        <div class="item-data">
                             <p>First name: {{ item.first_name }}</p>
                             <p>Last name: {{ item.last_name }}</p>
                             <p>Date: {{ item.date.strftime('%d.%m.') }}{{ item.bday_year }}</p>
                         </div>
-                        <hr>
-                        {% endif %}
+                    </div>
+                </div>
 
-                        {% if item.title == "anniversary" %}
-                        <div class="anniversary_item">
-                            <p>Anniversary:</p>
+                {% endif %}
+
+                {% if item.title == "anniversary" %}
+                <div class="row">
+                    <div class="col-sm-12 anniversary-item">
+                        <img class="item-img" src="https://s14.postimg.org/68614gl7l/wedding_rings_2.png">
+                        <div class="item-data">
                             <p>Name: {{ item.anniversary_name }}</p>
                             <p>Date: {{ item.date.strftime('%d.%m.') }}{{ item.anniversary_year }}</p>
                         </div>
-                        <hr>
-                        {% endif %}
+                </div>
+                </div>
+                {% endif %}
 
-                        {% if item.title == "event" %}
-                        <div class="event_item">
-                            <p>Event:</p>
+                {% if item.title == "event" %}
+                <div class="row">
+                    <div class="col-sm-12 event-item">
+                        <img class="item-img" src="https://s13.postimg.org/5mrsec9g7/favorites.png">
+                        <div class="item-data">
                             <p>Name: {{ item.event_name }}</p>
                             <p>Date: {{ item.date.strftime('%d.%m.%Y at %H:%M') }}</p>
                         </div>
-                        <hr>
-                        {% endif %}
-                    {% endfor %}
+                    </div>
+                </div>
                 {% endif %}
-            </div>
-        </div>
+            {% endfor %}
+        <hr>
+        {% endif %}
+
+
     </div>
 {% endblock specifika %}

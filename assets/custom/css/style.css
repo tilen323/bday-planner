@@ -150,9 +150,42 @@ body {
     color: #fdfffc;
 }
 
-#footer {
+.item-img {
+    float: left;
+    max-height: 80px;
+    margin: 25px;
+}
+
+.item-data {
+    float: left;
+    margin: 25px;
+    color: #fdfffc;
+}
+
+.main-page .col-sm-12 {
+    padding:10px;
+    border-bottom: 1px solid #fdfffc;
+}
+
+.bday-item {
+    background-color: #c41515;
+}
+
+.anniversary-item {
+    background-color: #dbb706;
+}
+
+.event-item {
+    background-color: #659300;
+}
+
+.footer {
     position: absolute;
     bottom: 0;
-    left:25%;
     background-color: #086788;
+    width: 100%;
+    min-height: 45px;
+    text-align: center;
+    padding: 10px;
+    color: #fdfffc;
 }
