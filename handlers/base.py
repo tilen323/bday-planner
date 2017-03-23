@@ -58,14 +58,17 @@ class MainHandler(BaseHandler):
         if user:
 
             bday_list = Bday.query(Bday.user_email == user.email(),
+                                   Bday.deleted == False,
                                    Bday.date > datetime.now(),
                                    Bday.date < datetime.now() + timedelta(days=30)).fetch()
 
             anniversary_list = Anniversary.query(Anniversary.user_email == user.email(),
+                                                 Anniversary.deleted == False,
                                                  Anniversary.date > datetime.now(),
                                                  Anniversary.date < datetime.now() + timedelta(days=30)).fetch()
 
             event_list = Event.query(Event.user_email == user.email(),
+                                     Bday.deleted == False,
                                      Event.date > datetime.now(),
                                      Event.date < datetime.now() + timedelta(days=30)).fetch()
 

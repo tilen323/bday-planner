@@ -30,6 +30,10 @@ class AddBdayHandler(BaseHandler):
 
         datetime_object = datetime.strptime(bday_date, '%d%m%Y')
 
+        bday_age = int(now.year) - int(bday_year) - 1
+        if now < datetime_object:
+            bday_age = int(now.year) - int(bday_year)
+
         if now > datetime_object:
             str_datetime_object = datetime.strftime(datetime_object.date(), '%d%m%Y')
             year = int(str_datetime_object[-4:]) + 1
@@ -37,10 +41,10 @@ class AddBdayHandler(BaseHandler):
             datetime_object = datetime.strptime(bday_date_new, '%d%m%Y')
 
         if avatar:
-            Bday.add_bday(first_name=first_name, last_name=last_name, avatar=avatar, date=datetime_object, bday_year=int(bday_year), user_email=user_profile.email)
+            Bday.add_bday(first_name=first_name, last_name=last_name, avatar=avatar, date=datetime_object, bday_age=bday_age, bday_year=int(bday_year), user_email=user_profile.email)
         else:
             avatar_url = "https://s21.postimg.org/bu6oqrxg7/man.png"
-            Bday.add_bday(first_name=first_name, last_name=last_name, avatar=avatar_url, date=datetime_object, bday_year=int(bday_year), user_email=user_profile.email)
+            Bday.add_bday(first_name=first_name, last_name=last_name, avatar=avatar_url, date=datetime_object, bday_age=bday_age, bday_year=int(bday_year), user_email=user_profile.email)
 
         return self.render_template("add_bday.html")
 

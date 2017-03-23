@@ -29,6 +29,10 @@ class AddAnniversaryHandler(BaseHandler):
         anniversary_date = anniversary_day + anniversary_month + str(now.year)
         datetime_object = datetime.strptime(anniversary_date, '%d%m%Y')
 
+        anniversary_age = int(now.year) - int(anniversary_year) - 1
+        if now < datetime_object:
+            anniversary_age = int(now.year) - int(anniversary_year)
+
         if now > datetime_object:
             str_datetime_object = datetime.strftime(datetime_object.date(), '%d%m%Y')
             year = int(str_datetime_object[-4:]) + 1
@@ -38,6 +42,7 @@ class AddAnniversaryHandler(BaseHandler):
         Anniversary.add_anniversary(anniversary_name=anniversary_name,
                                     date=datetime_object,
                                     anniversary_year=int(anniversary_year),
+                                    anniversary_age=int(anniversary_age),
                                     user_email=user_profile.email,
                                     avatar=avatar)
 

@@ -11,7 +11,10 @@
 {% block specifika %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-offset-3 col-sm-6">
+            <div class="col-sm-offset-3 col-sm-6 add_bday">
+                <h1>Add Anniversary:</h1>
+                <hr class="anniversary_hr">
+
                 <form method="post">
 
                     <input type="hidden" name="csrf_token" value="{{csrf_token}}">
@@ -87,6 +90,7 @@
                         </div>
                     </div>
 
+                    <p><strong>Select image:</strong></p>
                     <div class="avatar_radio">
                             <label class="radio-inline"><input type="radio" name="avatar" value="https://s16.postimg.org/6tyqb85vp/004_wedding_rings.png" checked>
                                 <img class="avatar_select" src="https://s16.postimg.org/6tyqb85vp/004_wedding_rings.png">
@@ -113,7 +117,7 @@
                             </label><br><br>
                         </div>
 
-                    <button class="btn btn-default">Add Anniversary</button>
+                    <button class="add_bday_btn">Add Anniversary</button>
                 </form>
             </div>
         </div>

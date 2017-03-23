@@ -7,14 +7,15 @@ class Bday(ndb.Model):
     date = ndb.DateTimeProperty()
     avatar = ndb.StringProperty()
     bday_year = ndb.IntegerProperty()
+    bday_age = ndb.IntegerProperty()
     user_email = ndb.StringProperty()
     deleted = ndb.BooleanProperty(default=False)
     created = ndb.DateTimeProperty(auto_now_add=True)
     updated = ndb.DateTimeProperty(auto_now=True)
 
     @classmethod
-    def add_bday(cls, first_name, last_name, avatar, date, bday_year, user_email):
-        new_bday = Bday(first_name=first_name, last_name=last_name, avatar=avatar, date=date, bday_year=bday_year, user_email=user_email)
+    def add_bday(cls, first_name, last_name, avatar, date, bday_year, bday_age, user_email):
+        new_bday = Bday(first_name=first_name, last_name=last_name, avatar=avatar, date=date, bday_age=bday_age, bday_year=bday_year, user_email=user_email)
         new_bday.put()
 
     @classmethod

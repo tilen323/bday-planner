@@ -11,7 +11,9 @@
 {% block specifika %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-offset-3 col-sm-6">
+            <div class="col-sm-offset-3 col-sm-6 add_bday">
+                <h1>Add Birthday:</h1>
+                <hr class="bday_hr">
                 <form method="post">
 
                     <input type="hidden" name="csrf_token" value="{{csrf_token}}">
@@ -97,7 +99,7 @@
                         <input class="form-control" name="avatar" type="url" pattern="https?://.+" placeholder="Optional..">
                     </div>
 
-                    <button class="btn btn-default">Add Birthday</button>
+                    <button class="add_bday_btn">Add Birthday</button>
                 </form>
             </div>
         </div>

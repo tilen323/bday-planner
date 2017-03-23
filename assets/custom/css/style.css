@@ -9,13 +9,13 @@ html{
 }
 
 body {
-    background-color: #76c1b5;
+    background-color: #06aed5;
     font-family: 'Josefin Sans', sans-serif;
 }
 
 .ni-logiran {
     margin-top: 5%;
-    background-color: #247ba0;
+    background-color: #086788;
     color: #fdfffc;
     text-align: center;
     font-family: 'Josefin Sans', sans-serif;
@@ -63,14 +63,14 @@ body {
 }
 
 .navbar {
-    background-color: #247ba0;
+    background-color: #086788;
     color: #fdfffc;
     margin: 0;
     border-radius: 0px;
 }
 
 .logo-menu {
-    background-color: #247ba0;
+    background-color: #086788;
     width: 25px;
     padding: 0;
     margin-top: -5;
@@ -106,8 +106,53 @@ body {
     margin-top: 40px;
 }
 
+.add_bday {
+    margin-top: 40px;
+    background-color: #086788;
+    color: #fdfffc;;
+}
+
+.add_bday h1 {
+    margin-top: 25px;
+}
+
+.bday_hr {
+    border-color: #fdfffc;
+    width: 210px;
+    margin-top: -5px;
+}
+
+.anniversary_hr {
+    border-color: #fdfffc;
+    width: 260px;
+    margin-top: -5px;
+}
+
+.event_hr {
+    border-color: #fdfffc;
+    width: 170px;
+    margin-top: -5px;
+}
+
+.add_bday_btn {
+   color: #fdfffc;
+   text-decoration: none;
+   border: 1px solid #fdfffc;
+   padding: 5 10;
+   background-color: #247ba0;
+   transition: background-color 0.5s;
+   border-radius: 0px;
+   margin: 15px auto 25px auto;
+}
+
+.add_bday_btn:hover {
+    background-color: #c41515;
+    color: #fdfffc;
+}
+
 #footer {
     position: absolute;
     bottom: 0;
     left:25%;
+    background-color: #086788;
 }
