@@ -51,7 +51,7 @@ class AddBdayHandler(BaseHandler):
             avatar_url = "https://s21.postimg.org/bu6oqrxg7/man.png"
             Bday.add_bday(first_name=first_name, last_name=last_name, avatar=avatar_url, date=datetime_object, bday_age=bday_age, bday_year=int(bday_year), user_email=user_profile.email)
 
-        return self.render_template("add_bday.html")
+            return self.redirect_to("bday-add")
 
 
 class BdayDetailsHandler(BaseHandler):

@@ -36,7 +36,7 @@ class AddEventHandler(BaseHandler):
 
         Event.add_event(event_name=event_name, location=location, avatar=avatar, date=datetime_object, user_email=user_profile.email)
 
-        return self.render_template("add_event.html")
+        return self.redirect_to("event-add")
 
 
 class EventDetailsHandler(BaseHandler):

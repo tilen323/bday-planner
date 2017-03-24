@@ -52,7 +52,7 @@ class AddAnniversaryHandler(BaseHandler):
                                     user_email=user_profile.email,
                                     avatar=avatar)
 
-        return self.render_template("add_anniversary.html")
+        return self.redirect_to("anniversary-add")
 
 
 class AnniversaryDetailsHandler(BaseHandler):
