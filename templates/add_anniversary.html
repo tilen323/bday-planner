@@ -12,8 +12,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4 add_bday">
-                <h1>Add Anniversary:</h1>
-                <hr class="anniversay">
+                <h2>Add Anniversary:</h2>
+                <hr class="anniversary_hr">
 
                 <form method="post">
 
@@ -126,7 +126,9 @@
                     </div>
                 </div>
                 {% endfor %}
-
+                {% else %}
+                <p class="example-text">Once you add anniversaries - it will look something like this:</p>
+                <img class="img-responsive" src="https://s17.postimg.org/kk36fwlhb/list-example.png">
                 {% endif %}
             </div>
         </div>

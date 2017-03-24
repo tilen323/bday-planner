@@ -70,6 +70,16 @@ h2 {
     text-align: center;
 }
 
+.main-page-nolist p {
+    color: #fdfffc;
+    font-size: 18;
+}
+
+.main-page-nolist img {
+    border: 1px solid #fdfffc;
+}
+
+
 .navbar {
     background-color: #086788;
     color: #fdfffc;
@@ -132,13 +142,13 @@ h2 {
 
 .anniversary_hr {
     border-color: #fdfffc;
-    width: 240px;
+    width: 195px;
     margin-top: -5px;
 }
 
 .event_hr {
     border-color: #fdfffc;
-    width: 155px;
+    width: 125px;
     margin-top: -5px;
 }
 
@@ -304,6 +314,10 @@ h2 {
 .modal-body-delete {
     background-color: #086788;
     color: #fdfffc;
+}
+
+.example-text {
+    font-size: 125%;
 }
 
 .footer {
