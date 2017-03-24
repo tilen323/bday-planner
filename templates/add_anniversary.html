@@ -11,9 +11,9 @@
 {% block specifika %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-offset-3 col-sm-6 add_bday">
+            <div class="col-sm-4 add_bday">
                 <h1>Add Anniversary:</h1>
-                <hr class="anniversary_hr">
+                <hr class="anniversay">
 
                 <form method="post">
 
@@ -100,16 +100,8 @@
                                 <img class="avatar_select" src="https://s8.postimg.org/cm4cacnxh/003_diploma.png">
                             </label>
 
-                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s14.postimg.org/662dahzxd/002_balloons.png">
-                                <img class="avatar_select" src="https://s14.postimg.org/662dahzxd/002_balloons.png">
-                            </label>
-
                             <label class="radio-inline"><input type="radio" name="avatar" value="https://s17.postimg.org/unqdre6in/001_wedding_day.png">
                                 <img class="avatar_select" src="https://s17.postimg.org/unqdre6in/001_wedding_day.png">
-                            </label>
-
-                            <label class="radio-inline"><input type="radio" name="avatar" value="https://s9.postimg.org/9kicd0fcv/006_fireworks.png">
-                                <img class="avatar_select" src="https://s9.postimg.org/9kicd0fcv/006_fireworks.png">
                             </label>
 
                             <label class="radio-inline"><input type="radio" name="avatar" value="https://s10.postimg.org/ehni474qh/cocktail.png">
@@ -119,6 +111,23 @@
 
                     <button class="add_bday_btn">Add Anniversary</button>
                 </form>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-7 bday_list">
+                {% if anniversary_list %}
+                <h2>List of anniversaries:</h2>
+                <hr class="anniversary_list_hr">
+                {% for anniversary in anniversary_list %}
+                <div class="col-sm-10 col-sm-offset-1 margin-ten">
+                    <div class="row bday_list_item">
+                        <p>{{ anniversary.date.strftime('%d.%B %Y') }}</p>
+                        <p>{{ anniversary.anniversary_name }}</p>
+                        <a style="position:absolute;top:0px;left:0px;width:100%;height:100%;display:inline;" href ="/anniversary/details/{{ anniversary.key.id() }}"></a>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% endif %}
             </div>
         </div>
     </div>

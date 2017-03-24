@@ -13,6 +13,11 @@ indexes:
 - kind: Anniversary
   properties:
   - name: deleted
+  - name: date
+
+- kind: Anniversary
+  properties:
+  - name: deleted
   - name: user_email
   - name: date
 
@@ -24,12 +29,22 @@ indexes:
 - kind: Bday
   properties:
   - name: deleted
+  - name: date
+
+- kind: Bday
+  properties:
+  - name: deleted
   - name: user_email
   - name: date
 
 - kind: Bday
   properties:
   - name: user_email
+  - name: date
+
+- kind: Event
+  properties:
+  - name: deleted
   - name: date
 
 - kind: Event

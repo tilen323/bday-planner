@@ -87,8 +87,9 @@ class MainHandler(BaseHandler):
                     new_list.append(event)
 
             new_sorted_list = sorted(new_list, key=attrgetter('date'))
+            list_len = len(new_sorted_list)
 
-            params = {"new_sorted_list": new_sorted_list}
+            params = {"new_sorted_list": new_sorted_list, "list_len": list_len}
         else:
             params = {"user": user}
 

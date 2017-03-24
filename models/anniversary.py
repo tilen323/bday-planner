@@ -1,5 +1,7 @@
 from google.appengine.ext import ndb
 
+from datetime import datetime
+
 class Anniversary(ndb.Model):
     title = ndb.StringProperty(default="anniversary")
     anniversary_name = ndb.StringProperty()
@@ -35,6 +37,20 @@ class Anniversary(ndb.Model):
         anniversary.anniversary_name = anniversary_name
         anniversary.date = date
         anniversary.avatar = avatar
+        anniversary.put()
+        return anniversary
+
+    @classmethod
+    def plus_one_year(cls, anniversary):
+        anniversary_date = anniversary.date
+        string_anniversary_date = datetime.strftime(anniversary_date.date(), '%d%m%Y')
+        day = string_anniversary_date[:2]
+        month = string_anniversary_date[2:4]
+        year = int(string_anniversary_date[-4:]) + 1
+        anniversary_new_date = day + month + str(year)
+        datetime_object = datetime.strptime(anniversary_new_date, '%d%m%Y')
+
+        anniversary.date = datetime_object
         anniversary.put()
         return anniversary
 

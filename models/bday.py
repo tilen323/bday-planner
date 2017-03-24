@@ -1,5 +1,7 @@
 from google.appengine.ext import ndb
 
+from datetime import datetime
+
 class Bday(ndb.Model):
     title = ndb.StringProperty(default="bday")
     first_name = ndb.StringProperty()
@@ -30,5 +32,19 @@ class Bday(ndb.Model):
         bday.last_name = last_name
         bday.avatar = avatar
         bday.date = date
+        bday.put()
+        return bday
+
+    @classmethod
+    def plus_one_year(cls,bday):
+        bday_date = bday.date
+        string_bday_date = datetime.strftime(bday_date.date(), '%d%m%Y')
+        day = string_bday_date[:2]
+        month = string_bday_date[2:4]
+        year = int(string_bday_date[-4:]) + 1
+        bday_new_date = day + month + str(year)
+        datetime_object = datetime.strptime(bday_new_date, '%d%m%Y')
+
+        bday.date = datetime_object
         bday.put()
         return bday

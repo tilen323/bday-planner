@@ -10,7 +10,12 @@ from models.user_profile import User
 
 class AddBdayHandler(BaseHandler):
     def get(self):
-        return self.render_template("add_bday.html")
+        user = users.get_current_user()
+        bday_list = Bday.query(Bday.deleted == False, Bday.user_email == user.email()).order(Bday.date).fetch()
+
+        params = {"bday_list": bday_list}
+
+        return self.render_template("add_bday.html", params=params)
 
     @validate_csrf
     def post(self):
@@ -31,7 +36,7 @@ class AddBdayHandler(BaseHandler):
         datetime_object = datetime.strptime(bday_date, '%d%m%Y')
 
         bday_age = int(now.year) - int(bday_year) - 1
-        if now < datetime_object:
+        if now > datetime_object:
             bday_age = int(now.year) - int(bday_year)
 
         if now > datetime_object:
@@ -48,3 +53,23 @@ class AddBdayHandler(BaseHandler):
 
         return self.render_template("add_bday.html")
 
+
+class BdayDetailsHandler(BaseHandler):
+    def get(self, bday_id):
+        bday = Bday.get_by_id(int(bday_id))
+
+        params = {"bday": bday}
+
+        return self.render_template("bday_details.html", params=params)
+
+
+class BdayDeleteHandler(BaseHandler):
+    @validate_csrf
+    def post(self, bday_id):
+        bday = Bday.get_by_id(int(bday_id))
+        user = users.get_current_user()
+
+        if user.email() == bday.user_email:
+            Bday.delete_bday(bday=bday)
+
+        return self.redirect_to("bday-add")

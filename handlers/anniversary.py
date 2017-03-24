@@ -10,7 +10,13 @@ from models.anniversary import Anniversary
 
 class AddAnniversaryHandler(BaseHandler):
     def get(self):
-        return self.render_template("add_anniversary.html")
+        user = users.get_current_user()
+        anniversary_list = Anniversary.query(Anniversary.deleted == False,
+                                             Anniversary.user_email == user.email()).order(Anniversary.date).fetch()
+
+        params = {"anniversary_list": anniversary_list}
+
+        return self.render_template("add_anniversary.html", params=params)
 
     @validate_csrf
     def post(self):
@@ -30,7 +36,7 @@ class AddAnniversaryHandler(BaseHandler):
         datetime_object = datetime.strptime(anniversary_date, '%d%m%Y')
 
         anniversary_age = int(now.year) - int(anniversary_year) - 1
-        if now < datetime_object:
+        if now > datetime_object:
             anniversary_age = int(now.year) - int(anniversary_year)
 
         if now > datetime_object:
@@ -47,3 +53,23 @@ class AddAnniversaryHandler(BaseHandler):
                                     avatar=avatar)
 
         return self.render_template("add_anniversary.html")
+
+
+class AnniversaryDetailsHandler(BaseHandler):
+    def get(self, anniversary_id):
+        anniversary = Anniversary.get_by_id(int(anniversary_id))
+
+        params = {"anniversary": anniversary}
+        return self.render_template("anniversary_details.html", params=params)
+
+
+class AnniversaryDeleteHandler(BaseHandler):
+    @validate_csrf
+    def post(self, anniversary_id):
+        anniversary = Anniversary.get_by_id(int(anniversary_id))
+        user = users.get_current_user()
+
+        if user.email() == anniversary.user_email:
+            Anniversary.delete_anniversary(anniversary=anniversary)
+
+        return self.redirect_to("anniversary-add")

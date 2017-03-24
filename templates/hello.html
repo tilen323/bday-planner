@@ -12,46 +12,47 @@
 {% block specifika %}
     <div class="container main-page">
         {% if new_sorted_list %}
+        <div class="col-sm-10 col-sm-offset-1">
+                    <div class="row info-bar">
+                        <p>You have {{ list_len }} event/s planned in the next 30 days:</p>
+                    </div>
+                </div>
             {% for item in new_sorted_list %}
                 {% if item.title == "bday" %}
-                <div class="row">
-                    <div class="col-sm-12 bday-item">
+                <div class="col-sm-10 col-sm-offset-1 margin-ten">
+                    <div class="row bday-item">
                         <img class="item-img" src="https://s18.postimg.org/jodctqidl/supermarket_gift.png">
-                        <div class="item-data">
-                            <p>First name: {{ item.first_name }}</p>
-                            <p>Last name: {{ item.last_name }}</p>
-                            <p>Date: {{ item.date.strftime('%d.%m.') }}{{ item.bday_year }}</p>
-                        </div>
+                        <p class="item-data">{{ item.first_name }} {{ item.last_name }}</p>
+                        <p class="item_date">{{ item.date.strftime('%d.%B') }}</p>
+                        <a style="position:absolute;top:0px;left:0px;width:100%;height:100%;display:inline;" href ="/bday/details/{{ item.key.id() }}"></a>
                     </div>
                 </div>
 
                 {% endif %}
 
                 {% if item.title == "anniversary" %}
-                <div class="row">
-                    <div class="col-sm-12 anniversary-item">
+                <div class="col-sm-10 col-sm-offset-1 margin-ten">
+                    <div class="row anniversary-item">
                         <img class="item-img" src="https://s14.postimg.org/68614gl7l/wedding_rings_2.png">
-                        <div class="item-data">
-                            <p>Name: {{ item.anniversary_name }}</p>
-                            <p>Date: {{ item.date.strftime('%d.%m.') }}{{ item.anniversary_year }}</p>
-                        </div>
+                        <p class="item-data">{{ item.anniversary_name }}</p>
+                        <p class="item_date">{{ item.date.strftime('%d.%B') }}</p>
+                        <a style='position:absolute;top:0px;left:0px;width:100%;height:100%;display:inline;' href ="/anniversary/details/{{ item.key.id() }}"></a>
                 </div>
                 </div>
                 {% endif %}
 
                 {% if item.title == "event" %}
-                <div class="row">
-                    <div class="col-sm-12 event-item">
+                <div class="col-sm-10 col-sm-offset-1 margin-ten">
+                    <div class="row event-item">
                         <img class="item-img" src="https://s13.postimg.org/5mrsec9g7/favorites.png">
-                        <div class="item-data">
-                            <p>Name: {{ item.event_name }}</p>
-                            <p>Date: {{ item.date.strftime('%d.%m.%Y at %H:%M') }}</p>
-                        </div>
+                        <p class="item-data">{{ item.event_name }}</p>
+                        <p class="item_date">{{ item.date.strftime('%d.%B at %H:%M') }}</p>
+                        <a style='position:absolute;top:0px;left:0px;width:100%;height:100%;display:inline;' href ="/event/details/{{ item.key.id() }}"></a>
                     </div>
                 </div>
                 {% endif %}
             {% endfor %}
-        <hr>
+
         {% endif %}
 
 

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block active %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/bday/add">Birthdays</a></li>
+    <li class="active"><a href="/anniversary/add">Anniversaries</a></li>
+    <li><a href="/event/add">Events</a></li>
+{% endblock active %}
+
+
+{% block specifika %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 bday_details_heading">
+            <h2>Anniversary details:</h2>
+        </div>
+
+    </div>
+    <div class="row bday_details">
+        <div class="col-sm-offset-2 col-sm-8 bday_details_body">
+            <div class="col-sm-4">
+                <img class="img-responsive" src="{{ anniversary.avatar }}">
+            </div>
+            <div class="col-sm-8 bday_details_data">
+                <p>Anniversary name: {{ anniversary.anniversary_name }}</p>
+                <p>Date of anniversary: {{ anniversary.date.strftime('%d.%B') }} {{ anniversary.anniversary_year }}</p>
+                <p>Age: {{ anniversary.anniversary_age }}</p>
+
+                <a href="#" data-toggle="modal" data-target="#deleteAnniversary">
+                    <img class="delete-img" src="https://s23.postimg.org/bynkefl0r/close.png">
+                </a>
+
+                <!-- Modal - delete -->
+                <div class="modal fade" id="deleteAnniversary" tabindex="-1" role="dialog" aria-labelledby="deleteAnniversaryLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form method="post" action="/anniversary/delete/{{ anniversary.key.id() }}">
+                            <div class="modal-content">
+
+                                <input type="hidden" name="csrf_token" value="{{csrf_token}}">
+
+                                <div class="modal-body modal-body-delete">
+                                    <p>
+                                        Do you really want to delete this anniversary?
+                                    </p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger">Delete anniversary</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- End modal - delete -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock specifika %}

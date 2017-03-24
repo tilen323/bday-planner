@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block active %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/bday/add">Birthdays</a></li>
+    <li><a href="/anniversary/add">Anniversaries</a></li>
+    <li class="active"><a href="/event/add">Events</a></li>
+{% endblock active %}
+
+
+{% block specifika %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 bday_details_heading">
+            <h2>Event details:</h2>
+        </div>
+
+    </div>
+    <div class="row bday_details">
+        <div class="col-sm-offset-2 col-sm-8 bday_details_body">
+            <div class="col-sm-4">
+                <img class="img-responsive" src="{{ event.avatar }}">
+            </div>
+            <div class="col-sm-8 bday_details_data">
+                <p>Event name: {{ event.event_name }}</p>
+                <p>Location: {{ event.location }}</p>
+                <p>Date of event: {{ event.date.strftime('%d.%B %Y at %H:%M') }}</p>
+
+                <a href="#" data-toggle="modal" data-target="#deleteEvent">
+                    <img class="delete-img" src="https://s23.postimg.org/bynkefl0r/close.png">
+                </a>
+
+                <!-- Modal - delete  -->
+                <div class="modal fade" id="deleteEvent" tabindex="-1" role="dialog" aria-labelledby="deleteEventLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form method="post" action="/event/delete/{{ event.key.id() }}">
+                            <div class="modal-content">
+
+                                <input type="hidden" name="csrf_token" value="{{csrf_token}}">
+
+                                <div class="modal-body modal-body-delete">
+                                    <p>
+                                        Do you really want to delete this event?
+                                    </p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger">Delete event</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- End modal - delete  -->
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock specifika %}

@@ -1,0 +1,4 @@
+cron:
+- description: Send Bday email to users
+  url: /cron/mail/bday
+  schedule: every day 06:30

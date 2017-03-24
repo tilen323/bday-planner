@@ -10,7 +10,11 @@ from models.event import Event
 
 class AddEventHandler(BaseHandler):
     def get(self):
-        return self.render_template("add_event.html")
+        user = users.get_current_user()
+        event_list = Event.query(Event.deleted == False, Event.user_email == user.email()).order(Event.date).fetch()
+
+        params = {"event_list": event_list}
+        return self.render_template("add_event.html", params=params)
 
     @validate_csrf
     def post(self):
@@ -28,8 +32,27 @@ class AddEventHandler(BaseHandler):
         event_minute = self.request.get("event_minute")
 
         event_date = event_day + event_month + event_year + event_hour + event_minute
-        datetime_object = datetime.strptime(event_date, '%d%m%Y%I%M')
+        datetime_object = datetime.strptime(event_date, '%d%m%Y%H%M')
 
         Event.add_event(event_name=event_name, location=location, avatar=avatar, date=datetime_object, user_email=user_profile.email)
 
         return self.render_template("add_event.html")
+
+
+class EventDetailsHandler(BaseHandler):
+    def get(self, event_id):
+        event = Event.get_by_id(int(event_id))
+
+        params = {"event": event}
+        return self.render_template("event_details.html", params=params)
+
+class EventDeleteHandler(BaseHandler):
+    @validate_csrf
+    def post(self, event_id):
+        event = Event.get_by_id(int(event_id))
+        user = users.get_current_user()
+
+        if user.email() == event.user_email:
+            Event.delete_event(event=event)
+
+        return self.redirect_to("event-add")
