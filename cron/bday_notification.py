@@ -17,14 +17,15 @@ class BdayMailSendHandler(BaseHandler):
                                              Anniversary.date < datetime.now()).fetch()
 
         event_list = Event.query(Event.deleted == False,
-                                 Event.date > datetime.now() + timedelta(days=1)).fetch()
+                                 Event.date < datetime.now() + timedelta(days=1)).fetch()
 
         if bday_list:
             for bday in bday_list:
+                bday_name = bday.first_name + " " + bday.last_name
                 mail.send_mail(sender="prevolnik.tilen@gmail.com",
                                to=bday.user_email,
                                subject="Birthday reminder",
-                               body="{0} {1} has birthday today!".format(bday.first_name, bday.last_name))
+                               body="%s has birthday today!" % bday_name)
 
                 Bday.plus_one_year(bday=bday)
 
@@ -33,7 +34,7 @@ class BdayMailSendHandler(BaseHandler):
                 mail.send_mail(sender="prevolnik.tilen@gmail.com",
                                to=anniversary.user_email,
                                subject="Anniversary reminder",
-                               body="Anniversary of {} is today!".format(anniversary.anniversary_name))
+                               body="Anniversary of %s is today!" % anniversary.anniversary_name)
 
                 Anniversary.plus_one_year(anniversary=anniversary)
 
@@ -42,5 +43,7 @@ class BdayMailSendHandler(BaseHandler):
                 mail.send_mail(sender="prevolnik.tilen@gmail.com",
                                to=event.user_email,
                                subject="Event reminder",
-                               body="You have {} planned in the next 24 hours!".format(event.event_name))
+                               body="You have %s planned in the next 24 hours!" % event.event_name)
+
+                Event.delete_event(event=event)
 
