@@ -28,6 +28,7 @@ class BdayMailSendHandler(BaseHandler):
                                body="%s has birthday today!" % bday_name)
 
                 Bday.plus_one_year(bday=bday)
+                Bday.plus_one_year_age(bday=bday)
 
         if anniversary_list:
             for anniversary in anniversary_list:
@@ -37,6 +38,7 @@ class BdayMailSendHandler(BaseHandler):
                                body="Anniversary of %s is today!" % anniversary.anniversary_name)
 
                 Anniversary.plus_one_year(anniversary=anniversary)
+                Anniversary.plus_one_year_age(anniversary=anniversary)
 
         if event_list:
             for event in event_list:
@@ -46,4 +48,3 @@ class BdayMailSendHandler(BaseHandler):
                                body="You have %s planned in the next 24 hours!" % event.event_name)
 
                 Event.delete_event(event=event)
-

@@ -5,6 +5,7 @@ from handlers.base import MainHandler
 from handlers.bday import AddBdayHandler, BdayDetailsHandler, BdayDeleteHandler
 from handlers.anniversary import AddAnniversaryHandler, AnniversaryDetailsHandler, AnniversaryDeleteHandler
 from handlers.event import AddEventHandler, EventDetailsHandler, EventDeleteHandler
+from handlers.user_profile import UserProfileHandler, UserProfileEditHandler
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler, name="main-page"),
@@ -17,6 +18,8 @@ app = webapp2.WSGIApplication([
     webapp2.Route('/event/add', AddEventHandler, name="event-add"),
     webapp2.Route('/event/details/<event_id:\d+>', EventDetailsHandler, name="event-details"),
     webapp2.Route('/event/delete/<event_id:\d+>', EventDeleteHandler, name="event-delete"),
+    webapp2.Route('/user/details', UserProfileHandler, name="user-profile"),
+    webapp2.Route('/user/details/edit/<user_profile_id:\d+>', UserProfileEditHandler, name="user-profile-edit"),
 
     #Cron
     webapp2.Route("/cron/mail/bday", BdayMailSendHandler, name="cron-mail-bday"),

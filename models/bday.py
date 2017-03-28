@@ -21,7 +21,7 @@ class Bday(ndb.Model):
         new_bday.put()
 
     @classmethod
-    def delete_bday(cls,bday):
+    def delete_bday(cls, bday):
         bday.deleted = True
         bday.put()
         return bday
@@ -36,7 +36,7 @@ class Bday(ndb.Model):
         return bday
 
     @classmethod
-    def plus_one_year(cls,bday):
+    def plus_one_year(cls, bday):
         bday_date = bday.date
         string_bday_date = datetime.strftime(bday_date.date(), '%d%m%Y')
         day = string_bday_date[:2]
@@ -46,5 +46,11 @@ class Bday(ndb.Model):
         datetime_object = datetime.strptime(bday_new_date, '%d%m%Y')
 
         bday.date = datetime_object
+        bday.put()
+        return bday
+
+    @classmethod
+    def plus_one_year_age(cls, bday):
+        bday.bday_age += 1
         bday.put()
         return bday

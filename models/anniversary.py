@@ -54,3 +54,9 @@ class Anniversary(ndb.Model):
         anniversary.put()
         return anniversary
 
+    @classmethod
+    def plus_one_year_age(cls, anniversary):
+        anniversary.anniversary_age += 1
+        anniversary.put()
+        return anniversary
+

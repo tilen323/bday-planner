@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block active %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/bday/add">Birthdays</a></li>
+    <li><a href="/anniversary/add">Anniversaries</a></li>
+    <li><a href="/event/add">Events</a></li>
+{% endblock active %}
+
+{% block active2 %}
+<li class="active"><a href="/user/details">{{ user.email }}</a></li>
+{% endblock active2 %}
+
+{% block specifika %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 bday_details_heading">
+            <h2>User details:</h2>
+        </div>
+    </div>
+    <div class="row bday_details">
+        <div class="col-sm-offset-2 col-sm-8 bday_details_body">
+            <div class="col-sm-4">
+                <img class="img-responsive" src="{{ user.avatar }}">
+            </div>
+            <div class="col-sm-8 bday_details_data">
+                <p>First name: {{ user_profile.first_name }}</p>
+                <p>Last name: {{ user_profile.last_name }}</p>
+                <p>Email: {{ user_profile.email }}</p>
+                {% if user_profile.bday_date%}
+                    <p>Date of birth: {{ user_profile.bday_date.strftime('%d.%B') }} {{ user_profile.bday_year }}</p>
+                    <p>Age: {{ user_profile.bday_age }}</p>
+                {% endif %}
+                <a href="/user/details/edit/{{ user_profile.key.id() }}" data-toggle="tooltip" title="Edit profile">
+                    <img class="delete-img" src="https://s22.postimg.org/6ero4qbtt/add.png">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock specifika %}
