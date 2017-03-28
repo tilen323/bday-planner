@@ -1,8 +1,10 @@
 from handlers.base import BaseHandler
 from utils.decorators import validate_csrf
 
-from google.appengine.api import users, memcache
+from google.appengine.api import mail
+from google.appengine.api import users, memcache, taskqueue
 from datetime import datetime
+
 
 from models.user_profile import User
 
@@ -62,5 +64,17 @@ class UserProfileEditHandler(BaseHandler):
                           bday_year=int(bday_year),
                           bday_age=bday_age,
                           avatar=avatar)
+
+        return self.redirect_to("user-profile")
+
+
+class InviteFriendHandler(BaseHandler):
+    @validate_csrf
+    def post(self):
+        user = users.get_current_user()
+        friend_email = self.request.get("email")
+
+        taskqueue.add(url='/task/invite-friend', params={"user_email": user.email(),
+                                                         "friend_email": friend_email})
 
         return self.redirect_to("user-profile")

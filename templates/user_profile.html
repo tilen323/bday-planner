@@ -37,5 +37,23 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-4 bday_details_heading">
+            <h2>Invite Friend:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-4 bday_details_body">
+            <form method="post" action="/invite-friend">
+                <input type="hidden" name="csrf_token" value="{{csrf_token}}">
+
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input class="form-control" type="email" name="email" required>
+                </div>
+                <button style="margin-top:-5; margin-bottom:10;" class="add_bday_btn">Invite</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock specifika %}
