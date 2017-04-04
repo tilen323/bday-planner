@@ -2,6 +2,7 @@
 # About
 
 Bday Planner App - GAE web application - backend Python
+
 With this app you will never forget your plans again! :)
 
 - Google login
