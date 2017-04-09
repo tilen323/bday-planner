@@ -9,7 +9,7 @@
 
 
 {% block specifika %}
-    <div class="container">
+    <div class="container slideDiv">
         <div class="row">
             <div class="col-sm-4 add_bday">
                 <h2>Add Birthday:</h2>
@@ -99,11 +99,11 @@
                         <input class="form-control" name="avatar" type="url" pattern="https?://.+" placeholder="Optional..">
                     </div>
 
-                    <button class="add_bday_btn">Add Birthday</button>
+                    <button class="add_bday_btn check-date">Add Birthday</button>
                 </form>
             </div>
             <div class="col-sm-1"></div>
-            <div class="col-sm-7 bday_list">
+            <div class="col-sm-7 bday_list slideDiv2">
                 {% if bday_list %}
                 <h2>List of birthdays:</h2>
                 <hr class="bday_list_hr">

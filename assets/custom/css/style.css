@@ -127,7 +127,7 @@ h2 {
 .add_bday {
     margin-top: 25px;
     background-color: #086788;
-    color: #fdfffc;;
+    color: #fdfffc;
 }
 
 .add_bday h1 {
@@ -306,6 +306,7 @@ h2 {
     margin: auto;
     padding: 15px;
 }
+
 .delete-img {
     height: 70px;
     float: right;
@@ -319,6 +320,15 @@ h2 {
 .example-text {
     font-size: 125%;
 }
+
+.slideDiv {
+    display: none;
+}
+
+.slideDiv2 {
+    display: none;
+}
+
 
 .footer {
     position: absolute;

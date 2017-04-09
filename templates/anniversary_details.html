@@ -9,7 +9,7 @@
 
 
 {% block specifika %}
-<div class="container">
+<div class="container slideDiv">
     <div class="row">
         <div class="col-sm-offset-2 col-sm-8 bday_details_heading">
             <h2>Anniversary details:</h2>
@@ -57,4 +57,9 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".slideDiv").show("drop", {direction: "up"}, 500);
+    });
+</script>
 {% endblock specifika %}

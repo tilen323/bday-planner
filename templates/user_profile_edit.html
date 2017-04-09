@@ -12,7 +12,7 @@
 {% endblock active2 %}
 
 {% block specifika %}
-<div class="container">
+<div class="container slideDiv">
     <div class="row">
         <div class="col-sm-offset-2 col-sm-8 bday_details_heading">
             <h2>User details edit:</h2>
@@ -105,9 +105,45 @@
                     <input class="form-control" name="avatar" type="url" pattern="https?://.+" placeholder="Optional..">
                 </div>
 
-                <button class="add_bday_btn">Edit Profile</button>
+                <button class="add_bday_btn check-date">Edit Profile</button>
             </form>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function checkDate(day, month) {
+
+        var isValid = "";
+
+       if ((month == 4 || month == 6 || month == 9 || month == 11) && day < 30) {
+           return true;
+       }
+       else if (month == 2 && day <= 28) {
+           return true;
+       }
+       else if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day <= 31) {
+           return true;
+       }
+       else {
+           return false;
+       }
+    };
+
+    $(document).ready(function() {
+        $(".slideDiv").show("drop", {direction: "up"}, 500);
+    });
+
+    $(".check-date").click(function(e) {
+
+        var day = parseInt($("#sel1").val());
+        var month = parseInt($("#sel2").val());
+
+        if (checkDate(day,month) == true) {
+            console.log("Date is valid!");
+        } else {
+            alert("Date is in-valid!");
+            e.preventDefault();
+        }
+    });
+</script>
 {% endblock specifika %}
